@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<addon addon_id="bdPaygatePayeer" title="[bd] Paygates: Payeer" version_string="1.0" version_id="6" url="https://teslacloud.net" install_callback_class="" install_callback_method="" uninstall_callback_class="" uninstall_callback_method="">
+  <admin_navigation/>
+  <admin_permissions/>
+  <admin_style_properties/>
+  <admin_templates/>
+  <admin_template_modifications/>
+  <code_events/>
+  <code_event_listeners>
+    <listener event_id="load_class_controller" execute_order="10" callback_class="bdPaygatePayeer_Listener" callback_method="load_class" active="1" hint="" description=""/>
+    <listener event_id="load_class_model" execute_order="10" callback_class="bdPaygatePayeer_Listener" callback_method="load_class" active="1" hint="" description=""/>
+  </code_event_listeners>
+  <cron/>
+  <email_templates/>
+  <email_template_modifications/>
+  <optiongroups>
+    <group group_id="bdPaygatePayeer" display_order="9999" debug_only="0"/>
+    <option option_id="bdPaygatePayeer_ID" edit_format="textbox" data_type="string" can_backup="1">
+      <default_value></default_value>
+      <edit_format_params></edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="bdPaygatePayeer" display_order="10"/>
+    </option>
+    <option option_id="bdPaygatePayeer_SecretKey" edit_format="textbox" data_type="string" can_backup="1">
+      <default_value></default_value>
+      <edit_format_params></edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="bdPaygatePayeer" display_order="20"/>
+    </option>
+  </optiongroups>
+  <permissions>
+    <permission_groups/>
+    <permissions/>
+    <interface_groups/>
+  </permissions>
+  <phrases>
+    <phrase title="bdpaygate_payeer_call_to_action" version_id="6" version_string="1.0"><![CDATA[Pay with Payeer]]></phrase>
+    <phrase title="option_bdPaygatePayeer_ID" version_id="6" version_string="1.0"><![CDATA[Merchant Id]]></phrase>
+    <phrase title="option_bdPaygatePayeer_ID_explain" version_id="6" version_string="1.0"><![CDATA[Payeer]]></phrase>
+    <phrase title="option_bdPaygatePayeer_SecretKey" version_id="6" version_string="1.0"><![CDATA[Secret Key]]></phrase>
+    <phrase title="option_bdPaygatePayeer_SecretKey_explain" version_id="6" version_string="1.0"><![CDATA[Payeer]]></phrase>
+    <phrase title="option_group_bdPaygatePayeer" version_id="6" version_string="1.0"><![CDATA[[bd] Paygates: Payeer]]></phrase>
+    <phrase title="option_group_bdPaygatePayeer_description" version_id="6" version_string="1.0"><![CDATA[]]></phrase>
+  </phrases>
+  <route_prefixes/>
+  <style_properties/>
+  <templates/>
+  <public_template_modifications/>
+  <bb_code_media_sites/>
+  <bb_codes/>
+</addon>
