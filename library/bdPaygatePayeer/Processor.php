@@ -50,7 +50,7 @@ class bdPaygatePayeer_Processor extends bdPaygate_Processor_Abstract
         $log = $processorModel->getLogByTransactionId($transactionId);
         if (!empty($log)) {
             $this->_setError("Transaction {$transactionId} has already been processed");
-            echo $transactionDetails['m_orderid'].'|error';
+            echo $transactionDetails['m_orderid'] . '|error';
             return false;
         }
 
@@ -77,17 +77,16 @@ class bdPaygatePayeer_Processor extends bdPaygate_Processor_Abstract
             return false;
         }
 
-        // https://www.walletone.com/ru/merchant/documentation/#step5
         switch ($transactionDetails['m_status']) {
             case "success":
                 // Платеж успешно проведен
                 $itemId = base64_decode($transactionDetails['m_orderid']);
                 $paymentStatus = bdPaygate_Processor_Abstract::PAYMENT_STATUS_ACCEPTED;
-                echo $transactionDetails['m_orderid'].'|success';
+                echo $transactionDetails['m_orderid'] . '|success';
                 break;
             default:
                 $paymentStatus = bdPaygate_Processor_Abstract::PAYMENT_STATUS_REJECTED;
-                echo $transactionDetails['m_orderid'].'|success';
+                echo $transactionDetails['m_orderid'] . '|success';
         }
 
         return true;
@@ -104,26 +103,25 @@ class bdPaygatePayeer_Processor extends bdPaygate_Processor_Abstract
         $callToAction = new XenForo_Phrase('bdpaygate_payeer_call_to_action');
 
         $options = XenForo_Application::get('options');
-        $payeer_key = $options->bdPaygatePayeer_SecretKey;
 
         $payment = array(
-            'm_shop'        => $options->bdPaygatePayeer_ID,
-            'm_orderid'     => base64_encode($itemId),
-            'm_amount'      => $amount,
-            'm_curr'        => utf8_strtoupper($currency),
-            'm_desc'        => base64_encode($itemName),
-            'm_sign'        => $payeer_key
+            'm_shop'    => $options->bdPaygatePayeer_ID,
+            'm_orderid' => base64_encode($itemId),
+            'm_amount'  => $amount,
+            'm_curr'    => utf8_strtoupper($currency),
+            'm_desc'    => base64_encode($itemName),
+            'm_sign'    => $options->bdPaygatePayeer_SecretKey
         );
 
         // Генерация подписи для формы
         $payment['m_sign'] = strtoupper(hash('sha256', implode(":", $payment)));
 
         // Генерация формы
-        $form = "<form action='{$formAction}' method='POST'>";
+        $form = "<form action=\"{$formAction}\" method=\"POST\">";
         foreach ($payment as $item => $value){
-            $form .= "<input type='hidden' name='$item' value='$value' />";
+            $form .= "<input type=\"hidden\" name=\"$item\" value=\"$value\" />";
         }
-        $form .= "<input type='submit' value='{$callToAction}' class='button'/></form>";
+        $form .= "<input type=\"submit\" value=\"{$callToAction}\" class=\"button\"/></form>";
 
         return $form;
     }

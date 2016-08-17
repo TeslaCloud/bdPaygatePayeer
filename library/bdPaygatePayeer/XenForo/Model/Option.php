@@ -9,8 +9,7 @@ class bdPaygatePayeer_XenForo_Model_Option extends XFCP_bdPaygatePayeer_XenForo_
 
     public function getOptionsByIds(array $optionIds, array $fetchOptions = array())
     {
-        if (self::$_bdPaygatePayeer_hijackOptions === true)
-        {
+        if (self::$_bdPaygatePayeer_hijackOptions === true) {
             $optionIds[] = 'bdPaygatePayeer_ID';
             $optionIds[] = 'bdPaygatePayeer_SecretKey';
         }
